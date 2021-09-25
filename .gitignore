@@ -1,0 +1,3 @@
+.env
+google_sheets_api_key.json
+commands/__pycache__
