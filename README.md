@@ -85,11 +85,11 @@ You just need to have [Python](https://www.python.org/) and Pip installed on you
    ```sh
    pip install -r requirements.txt
    ```
-3. Create a new google sheet
+3. Create a new google sheet with [this layout](https://docs.google.com/spreadsheets/d/1suV-Z-MQ9kwAd2W3Cwm1kurPX3LTViCFP7HsaOvcMfk/edit?usp=sharing)
 4. Create a  `.env` file and fill it up with your discord bot token
    ```JS
    DISCORD_TOKEN=<token>
-   GOOGLE_SHEET_NAME=
+   GOOGLE_SHEET_NAME=Database
    ```
  5. Create a new Google Cloud API key for google sheets and download the key in your folder with the name `google_sheets_api_key.json`
  6. Give read and write perms to the google sheet to the email that was created during the api key creation
