@@ -3,7 +3,10 @@ from oauth2client.service_account import ServiceAccountCredentials
 import gspread
 import time
 from commands import translate
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
 
 # Sheet 0 is Guilds
 # Sheet 1 is Channels
@@ -23,7 +26,7 @@ creds = ServiceAccountCredentials.from_json_keyfile_name(
 client = gspread.authorize(creds)
 
 # get the instance of the Spreadsheet
-sheet = client.open('Database Hackapalooza Discord Translator')
+sheet = client.open(os.getenv("GOOGLE_SHEET_NAME"))
 
 
 def getguilds():
