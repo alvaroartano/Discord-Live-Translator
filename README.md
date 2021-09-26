@@ -52,7 +52,7 @@
 
 [![Product Name Screen Shot][product-screenshot]]
 
-This project is a project which was made for the 2021's [Hackapalooza](https://hackapalooza.dev). It consists on a live translator for discord which allows to limit languages to channels and translates which aren't written in it.
+This project is a project which was made for the 2021's [Hackapalooza](https://hackapalooza.dev) *(Winner of the Best Use of Google Cloud prize)*. It consists on a live translator for discord which allows to limit languages to channels and translates which aren't written in it.
 
 This means, you can set up a channel so it only accepts messages on English and if they're not written in it, it just translates the message in real time
 
