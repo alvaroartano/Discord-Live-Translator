@@ -49,9 +49,15 @@ def addguild(guildId, guildName, usern):
 
 
 def addChannel(guildId, channelId, lang):
+    print(lang)
+
+    if checkChannel(channelId) != False:
+        print("Channel already exists!")
+        return
 
     for language in translate.getlanguages():
         if language['code'] == lang:
+
             print("New channel configured! Adding to google Sheet...")
 
             current_time = time.strftime(f"%d/%m/%y %H:%M:%S")
@@ -64,6 +70,8 @@ def addChannel(guildId, channelId, lang):
                 [str(guildId), str(channelId), lang, language['name'], current_time])
             print("Succesfully added channel!")
             return True
+        else:
+            print("no compared")
     return False
 
 
@@ -74,8 +82,10 @@ def checkChannel(channelId):
     # get the data from the sheet
     channels_data = channels_sheet.get_all_records()
     print(channels_data)
-    # return the dataframe
-    for channel in channels_data:
-        if channel['Channel ID'] == channelId:
-            return channel['langIso']
+    if channels_data:
+        # return the dataframe
+        for channel in channels_data:
+            if channel['Channel ID'] == channelId:
+                return channel['LangIso']
+        return False
     return False
