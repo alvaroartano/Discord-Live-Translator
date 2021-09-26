@@ -2,6 +2,7 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import gspread
 import time
+from commands import translate
 
 
 # Sheet 0 is Guilds
@@ -43,8 +44,38 @@ def addguild(guildId, guildName, usern):
     guilds_sheet = sheet.get_worksheet(0)
 
     # append row containing data
-    guilds_sheet.append_row([guildId, guildName, usern, current_time])
-    print("Succesfully added!")
+    guilds_sheet.append_row([str(guildId), guildName, usern, current_time])
+    print("Succesfully added channel!")
 
 
-addguild(1, "test", 200)
+def addChannel(guildId, channelId, lang):
+
+    for language in translate.getlanguages():
+        if language['code'] == lang:
+            print("New channel configured! Adding to google Sheet...")
+
+            current_time = time.strftime(f"%d/%m/%y %H:%M:%S")
+
+            # get the channels sheet
+            channels_sheet = sheet.get_worksheet(1)
+
+            # append row containing data
+            channels_sheet.append_row(
+                [str(guildId), str(channelId), lang, language['name'], current_time])
+            print("Succesfully added channel!")
+            return True
+    return False
+
+
+def checkChannel(channelId):
+    print("starting")
+    # get the channels sheet
+    channels_sheet = sheet.get_worksheet(1)
+    # get the data from the sheet
+    channels_data = channels_sheet.get_all_records()
+    print(channels_data)
+    # return the dataframe
+    for channel in channels_data:
+        if channel['Channel ID'] == channelId:
+            return channel['langIso']
+    return False
